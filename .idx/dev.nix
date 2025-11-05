@@ -20,9 +20,9 @@
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
+
         # npm-install = "npm ci --no-audit --prefer-offline --no-progress --timing";
-        bun-install = "bun i";
-        nvm-install = "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash";
+        next-install = "mv .idx ~/idx_backup; bun create next-app@latest . --yes; mv ~/idx_backup .idx";
         # Open editors for the following files by default, if they exist:
         default.openFiles = [
           # Cover all the variations of language, src-dir, router (app/pages)
