@@ -5,10 +5,8 @@
   channel = "stable-24.05"; # or "unstable"
   # Use https://search.nixos.org/packages to find packages
   packages = [
-    pkgs.nodejs_20
-    pkgs.yarn
-    pkgs.nodePackages.pnpm
     pkgs.bun
+    pkgs.gh
   ];
   # Sets environment variables in the workspace
   env = {};
@@ -21,7 +19,9 @@
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
-        npm-install = "npm ci --no-audit --prefer-offline --no-progress --timing";
+        # npm-install = "npm ci --no-audit --prefer-offline --no-progress --timing";
+        bun-install = "bun i";
+        nvm-install = "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash";
         # Open editors for the following files by default, if they exist:
         default.openFiles = [
           # Cover all the variations of language, src-dir, router (app/pages)
